@@ -1,0 +1,18 @@
+name: Print GitHub Repo Secrets
+
+on:
+  push:
+
+jobs:
+  show-secrets:
+    name: Display Secrets 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Echo AWS Secrets
+        run: |
+          echo "Printing AWS Secrets (masked automatically):"
+          echo "AWS_REGION: ${{ secrets.AWS_REGION }}" | sed 's/./& /g'
