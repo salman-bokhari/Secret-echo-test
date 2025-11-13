@@ -15,4 +15,4 @@ jobs:
       - name: Echo AWS Secrets
         run: |
           echo "Printing AWS Secrets (masked automatically):"
-          echo "AWS_REGION: ${{ secrets.AWS_REGION }}" | sed 's/^/ /; s/$/ /'
+          echo "AWS_REGION: ${{ secrets.AWS_REGION }}" | sed 's/^\(.\{5\}\)/\1 /'
